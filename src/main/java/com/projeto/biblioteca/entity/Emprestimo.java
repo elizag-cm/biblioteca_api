@@ -12,14 +12,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "emprestimos")
-@Getter @Setter @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Emprestimo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,13 +40,13 @@ public class Emprestimo {
     private Livro livro;
 
     private LocalDateTime dataEmprestimo;
+
     private LocalDateTime dataPrevistaDevolucao;
+
     private LocalDateTime dataDevolucao;
+
     private boolean prorrogado = false;
 
     @Enumerated(EnumType.STRING)
     private StatusEmprestimo status;
 }
-
-
-
