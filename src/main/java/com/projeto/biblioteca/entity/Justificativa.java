@@ -12,6 +12,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,6 +23,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Justificativa {
 
     @Id
@@ -33,6 +37,7 @@ public class Justificativa {
 
     private String texto;
 
+    @Builder.Default
     @Enumerated(EnumType.STRING)
     private StatusJustificativa status = StatusJustificativa.PENDENTE;
 
@@ -43,8 +48,5 @@ public class Justificativa {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bibliotecario_id")
     private Usuario bibliotecario;
-
-    public Justificativa(StatusJustificativa status) {
-        this.status = status;
-    }
 }
+

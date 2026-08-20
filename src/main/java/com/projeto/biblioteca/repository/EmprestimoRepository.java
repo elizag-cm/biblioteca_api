@@ -24,4 +24,9 @@ public interface EmprestimoRepository extends JpaRepository<Emprestimo, Long> {
             StatusEmprestimo status,
             LocalDateTime data
     );
+
+    List<Emprestimo> findByStatus(
+            StatusEmprestimo status
+    );
 }
+
